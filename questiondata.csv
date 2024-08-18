@@ -1,0 +1,10 @@
+﻿number,content,option1,option2,option3,option4,img,answer
+1,On a two-lane street your vehicle is being followed by a fire engine that is not using emergency signals.,Continue to drive in a normal manner.,Stop as quickly as you can.,Speed up to get out of the way.,Slow down; move as far to the right as possible and stop.,IMG/twolanes.png,1
+2,What should you do when you approach an intersection controlled by four-way stop signs?,Stop.,"Slow down, stopping only if necessary.","Stop, wait your turn, and go when safe.",Speed up and clear the intersection.,IMG/4_Way_Stops.png,2
+3,This sign means:,Curves ahead.,Slippery surface,Winding road ahead,Icy conditions,IMG/windroad.png,3
+4,You are driving at a constant speed of 90 kilometers per hour. How long will it take you to travel 180 kilometers?,1.5 hours,2 hours,2.5 hours,3 hours,IMG/speedometer-90-km.jpg,4
+5,"If your car's stopping distance is 25 meters at 50 km/h, what will be the stopping distance at 100 km/h, assuming stopping distance increases with the square of the speed?",50 meters,75 meters,100 meters,125 meters,IMG/trafficsigns.png,2
+6,Your car uses 7 liters of fuel per 100 kilometers. How much fuel will you need to drive 350 kilometers,21 liters,24.5 liters,28 liters,31.5 liters,,4
+7,You need to cover 150 kilometers in 2 hours. What should be your average speed to reach your destination on time?,60 km/h,70 km/h,75 km/h,80 km/h,,1
+8,"If your reaction time is 1.2 seconds and you are driving at 90 km/h, how many meters will your car travel before you begin to apply the brakes? (1 km/h = 0.27778 m/s)",20 meters,25 meters,30 meters,35 meters,,2
+9,You need to arrive at a destination 150 kilometers away in 2.5 hours. What should be your average speed in kilometers per hour to arrive on time?,50 km/h,60 km/h,75 km/h,80 km/h,,3

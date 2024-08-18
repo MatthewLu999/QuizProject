@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DRIVER LICENSE QUIZ</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" src="CSS/login.css" />
+    <script src="JS/index.js"></script>
+    <style>
+      .questioncheckbox {
+        padding: 5px;
+        color: black;
+      }
+      .questioncheckbox:hover {
+        background-color: olivedrab;
+        cursor: pointer;
+        color: white;
+      }
+      .card {
+        margin-top: 8px !important;
+      }
+      .btnfixed {
+        font-size: 9px;
+        margin: 3px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="vh-100">
+      <!-- Image and text -->
+      <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+          <img
+            src="IMG/car.gif"
+            width="70"
+            height="50"
+            class="d-inline-block align-top"
+            alt=""
+          />
+          <span
+            style="
+              position: relative;
+              top: 10px;
+              font-weight: 800;
+              font-size: xx-large;
+              font-size: 20px;
+            "
+            >KNOWLEDGE TEST</span
+          >
+        </a>
+      </nav>
+      <div class="card" id="menusetting" style="width: 100%; padding: 30px">
+        <div class="card-header"><b>User Settings</b></div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="btn-group btn-block">
+              <button
+                id="btnnumberquestions"
+                type="button"
+                class="btn btn-danger dropdown-toggle btn-block"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Choose the number of questions
+              </button>
+              <div class="dropdown-menu btn-block">
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  style="font-size: medium; font-weight: bold"
+                  onclick="shownumberquestions(5)"
+                  >5 questions</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  style="font-size: medium; font-weight: bold"
+                  onclick="shownumberquestions(9)"
+                  >9 questions</a
+                >
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <span
+              id="usertotalquestions"
+              style="font-size: medium; font-weight: bold; padding: 15px"
+              >-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+            >
+          </li>
+          <li class="list-group-item">
+            <button
+              type="button"
+              class="btn btn-success btn-block"
+              onclick="startquiz()"
+            >
+              Start Quiz
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <br />
+    <section
+      id="timerdashboard"
+      style="
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+        width: 190px;
+        background-color: white;
+        border: solid 1px black;
+        z-index: 3;
+      "
+    >
+      <div id="timer" style="width: 100%; text-align: center">
+        Total time: 2 mintues
+      </div>
+      <div id="leftboard" style="padding: 5px"></div>
+    </section>
+    <section
+      id="timerdashboard"
+      style="position: fixed; bottom: 0px; left: 0px; width: 90px; z-index: 3"
+    >
+      <span
+        class="material-icons"
+        style="cursor: pointer"
+        onclick="scrollToTop()"
+      >
+        rocket
+      </span>
+    </section>
+    <section class="vh-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div id="questionsboard"></div>
+            <br />
+            <div id="containersubmitquiz" style="display: none">
+              <button
+                type="button"
+                class="btn btn-danger"
+                onclick="showConfirmModal()"
+              >
+                Submit the quiz
+              </button>
+            </div>
+            <br />
+            <div
+              id="resultofquiz"
+              class="alert alert-primary"
+              role="alert"
+              style="display: none; width: 100%"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div
+      class="modal fade"
+      id="confirmModal"
+      tabindex="-1"
+      aria-labelledby="confirmModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmModalLabel">
+              Confirmation Required
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Are you sure to submit this quiz?</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              onclick="cancelAction()"
+            >
+              No
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="confirmAction()"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
