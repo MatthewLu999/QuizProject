@@ -31,6 +31,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" src="CSS/login.css" />
+    <script src="JS/common.js"></script>
     <script src="JS/index.js"></script>
     <style>
       .questioncheckbox {
@@ -49,31 +50,61 @@
         font-size: 9px;
         margin: 3px !important;
       }
+      #txtviewgrades {
+        cursor: pointer;
+      }
+      #txtviewgrades:hover {
+        color: green !important;
+      }
     </style>
   </head>
   <body>
     <section class="vh-100">
       <!-- Image and text -->
       <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-          <img
-            src="IMG/car.gif"
-            width="70"
-            height="50"
-            class="d-inline-block align-top"
-            alt=""
-          />
-          <span
-            style="
-              position: relative;
-              top: 10px;
-              font-weight: 800;
-              font-size: xx-large;
-              font-size: 20px;
-            "
-            >KNOWLEDGE TEST</span
-          >
-        </a>
+        <div class="row" style="width: 100%">
+          <div class="col-md-10 col-xs-12">
+            <a class="navbar-brand" href="#">
+              <img
+                src="IMG/car.gif"
+                width="70"
+                height="50"
+                class="d-inline-block align-top"
+                alt=""
+              />
+              <span
+                id="welcome"
+                style="
+                  position: relative;
+                  top: 10px;
+                  font-weight: 800;
+                  font-size: xx-large;
+                  font-size: 20px;
+                "
+                >KNOWLEDGE TEST</span
+              >
+            </a>
+          </div>
+          <div class="col-md-2 col-xs-12">
+            <span
+              style="
+                position: relative;
+                top: 10px;
+                font-weight: 800;
+                font-size: xx-large;
+                font-size: 20px;
+              "
+              ><a id="txtviewgrades"
+                ><span
+                  class="material-icons"
+                  style="font-size: large; color: green"
+                >
+                  grade </span
+                >&nbsp;Recent grades</a
+              ></span
+            >
+          </div>
+        </div>
       </nav>
       <div class="card" id="menusetting" style="width: 100%; padding: 30px">
         <div class="card-header"><b>User Settings</b></div>
@@ -104,6 +135,20 @@
                   style="font-size: medium; font-weight: bold"
                   onclick="shownumberquestions(9)"
                   >9 questions</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  style="font-size: medium; font-weight: bold"
+                  onclick="shownumberquestions(15)"
+                  >15 questions</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  style="font-size: medium; font-weight: bold"
+                  onclick="shownumberquestions(30)"
+                  >30 questions</a
                 >
               </div>
             </div>
@@ -179,6 +224,16 @@
               role="alert"
               style="display: none; width: 100%"
             ></div>
+            <div id="restartarea" style="display: none; width: 100%">
+              <button
+                type="button"
+                class="btn btn-success"
+                onclick="restartQuiz()"
+              >
+                Restart the quiz
+              </button>
+            </div>
+            <br />
           </div>
         </div>
       </div>

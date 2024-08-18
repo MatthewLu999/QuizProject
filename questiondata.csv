@@ -1,10 +1,36 @@
 ﻿number,content,option1,option2,option3,option4,img,answer
-1,On a two-lane street your vehicle is being followed by a fire engine that is not using emergency signals.,Continue to drive in a normal manner.,Stop as quickly as you can.,Speed up to get out of the way.,Slow down; move as far to the right as possible and stop.,IMG/twolanes.png,1
-2,What should you do when you approach an intersection controlled by four-way stop signs?,Stop.,"Slow down, stopping only if necessary.","Stop, wait your turn, and go when safe.",Speed up and clear the intersection.,IMG/4_Way_Stops.png,2
-3,This sign means:,Curves ahead.,Slippery surface,Winding road ahead,Icy conditions,IMG/windroad.png,3
-4,You are driving at a constant speed of 90 kilometers per hour. How long will it take you to travel 180 kilometers?,1.5 hours,2 hours,2.5 hours,3 hours,IMG/speedometer-90-km.jpg,4
-5,"If your car's stopping distance is 25 meters at 50 km/h, what will be the stopping distance at 100 km/h, assuming stopping distance increases with the square of the speed?",50 meters,75 meters,100 meters,125 meters,IMG/trafficsigns.png,2
-6,Your car uses 7 liters of fuel per 100 kilometers. How much fuel will you need to drive 350 kilometers,21 liters,24.5 liters,28 liters,31.5 liters,,4
-7,You need to cover 150 kilometers in 2 hours. What should be your average speed to reach your destination on time?,60 km/h,70 km/h,75 km/h,80 km/h,,1
-8,"If your reaction time is 1.2 seconds and you are driving at 90 km/h, how many meters will your car travel before you begin to apply the brakes? (1 km/h = 0.27778 m/s)",20 meters,25 meters,30 meters,35 meters,,2
-9,You need to arrive at a destination 150 kilometers away in 2.5 hours. What should be your average speed in kilometers per hour to arrive on time?,50 km/h,60 km/h,75 km/h,80 km/h,,3
+1,What is the purpose of this sign?,Stop sign,Left lane,Pedestrian crosswalk ahead,Winding road ahead,IMG/pedestrian_cross_ahead.jpg,3
+2,What is the purpose of this sign?,"Road ends, exit right or left",ends ahead,"Left lane
+ends ahead","Two-way
+traffic ahead",IMG/road_end_exit.jpg,1
+3,This sign means:,School area,"Low structure clearance
+4.1 metres",School crosswalk ahead,Right curve ahead,IMG/school_area.jpg,1
+4,What is the minimum age to apply for a Class 5L license?,16 years old,15 years old,15.5 years old if enrolled in a driver course,18 years old,,3
+5,What is the consequence of driving with a suspended license?,Fine and possible jail time,Vehicle confiscation,Mandatory re-testing,Suspension extension,,4
+6,Which road sign is shaped like an octagon?,Yield sign,Stop sign,Speed limit sign,No entry sign,,2
+7,How long is a new driver in the Learner Stage for Class 5L?,9 months,12 months,15 months,6 months,,1
+8,What is required before you can book a Class 1 road test?,Passing a vision test,Completing a Mandatory Entry-Level course,Obtaining a supervising driver,A minimum of 18 months driving experience,,2
+9,What is the purpose of this sign?,"Reserved Lane located in median lane of cross-street,
+if turning right, enter the curb lane","Reserved Lane located in curb lane of cross-street,
+if turning right, enter the second lane from the curb",Reserved Bus Lane ahead,Maximum speed limit change ahead,IMG/enter_the_second_lane.jpg,2
+10,What is the minimum age to apply for a Class 5L license?,16 years old,15 years old,15.5 years old if enrolled in a driver course,18 years old,,3
+11,What is the consequence of driving with a suspended license?,Fine and possible jail time,Vehicle confiscation,Mandatory re-testing,Suspension extension,,4
+12,Which road sign is shaped like an octagon?,Yield sign,Stop sign,Speed limit sign,No entry sign,,2
+13,How long is a new driver in the Learner Stage for Class 5L?,9 months,12 months,15 months,6 months,,1
+14,What must you do at a stop sign ?,Yield to all vehicles,Stop completely and check for pedestrians,Slow down and proceed if clear,Only stop if other vehicles are present,,2
+15,What must a driver with a Class 5I license avoid?,Having pets in the vehicle,Having drugs or alcohol in their system,Driving on highways,Towing vehicles,,2
+16,What must a driver do at a four-way stop?,Yield to left,"First to stop, first to go",Yield to right,None of the above,,2
+17,"If no signs are present, who has the right of way at an uncontrolled intersection?",Pedestrians only,Vehicles on the right,Vehicles on the left,None of the above,,2
+18,Which signal allows buses to proceed before other traffic?,Green arrow,White vertical bar,Flashing amber,Flashing red,,2
+19,What is the correct action when approaching a yellow traffic light?,Speed up to clear the intersection,Prepare to stop,Proceed if no pedestrians are present,None of the above,,2
+20,Fill in the blank: Always _______ before changing lanes.,accelerate,signal,check the speedometer,None of the above,,2
+21,What does a flashing red light at an intersection require a driver to do?,Stop and proceed when safe,Yield to oncoming traffic,Ignore if no traffic is present,None of the above,,1
+22,When is it legal to turn left at a red light?,From any lane to any lane,From a one-way street to another one-way,From a two-way street to a one-way street,None of the above,,2
+23,"Fill in the blank: At a pedestrian crosswalk, drivers must _______.",stop,yield,accelerate through quickly,None of the above,,1
+24,What is required for a driver to move from the Learner to the Intermediate license stage?,Pass a road test,Complete a driver's education course,A recommendation from an instructor,None of the above,,1
+25,Fill in the blank: Use your _______ to indicate a turn.,headlights,horn,turn signals,None of the above,,3
+26,What does a solid white line on the road indicate?,Traffic going in the same direction,Traffic going in opposite directions,Passing is allowed,None of the above,,1
+27,When can a driver use a bus lane?,At any time,During off-peak hours,When making a turn,Never,,3
+28,Fill in the blank: _______ on your side means no overtaking.,Broken line,Solid line,Chevron markings,None of the above,,2
+29,What action should you take if an emergency vehicle approaches while you are in an intersection?,Continue through then pull over,Stop in the intersection,Pull over immediately,None of the above,,1
+30,Which light indicates that cyclists and buses may proceed?,Green cycle and bus arrow,Red cycle and bus arrow,Blue cycle and bus arrow,None of the above,,1

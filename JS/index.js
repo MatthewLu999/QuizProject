@@ -7,75 +7,25 @@ let btnsubmitquiz
 let countdown = 60;
 let limitedtime = 1
 let  myModal
+let user = ""
 //hide submit quiz at the first time 
 $(document).ready(function(){
      btnsubmitquiz = document.getElementById("containersubmitquiz")
     // console.log(btnsubmitquiz)
     btnsubmitquiz.style.display = "none"
     // say hello user
-    let user = getCookie("username");
+    user = getCookieforArray("username");
     if(user){
-        document.getElementById("welcome").innerText = "Welcome " + user + "to knowledge test"
+        document.getElementById("welcome").innerText = "Welcome " + user + " to knowledge test"
     }
+    //catch event view grade history
+    let btnviewgrade = document.getElementById("txtviewgrades")
+    btnviewgrade.addEventListener("click", function(){
+        window.open("viewgrade.html","_blank")
+      });
 })
 
-// login function 
-function login(){
-    let username = document.getElementById("useremail")
-    let userpassword = document.getElementById("userpassword")
-    username.classList.remove("is-invalid")
-    userpassword.classList.remove("is-invalid")
-    if(username.value.length >0 && userpassword.value.length >0){
-        var checkresult = check_email(username.value)
-        if(checkresult){
-        username.classList.add("is-valid")
-        userpassword.classList.add("is-valid")
-        if(username.value === "admin@gmail.com" && userpassword.value === "admin"){
-            setCookie("username", username.value, 365);
-            window.location.href = "index.html"
-        }else{
-            username.classList.add("is-valid")
-            userpassword.classList.add("is-invalid")
-        }
-        }else{
-        username.classList.add("is-invalid")
-        }
-    }else{
-  username.classList.add("is-invalid")
-  userpassword.classList.add("is-invalid")
-    }
-}
 
-//check user email is valid or not
-function check_email(useremail){
-    return useremail.includes('@');
-}
-
-//set cookie
-function setCookie(cname, cvalue, exdays) {
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    let expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  }
-
-
-  //get cookie
-  function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
 
 function shownumberquestions(numquestions){
     let tagresult = document.getElementById("usertotalquestions")
@@ -83,12 +33,16 @@ function shownumberquestions(numquestions){
     totalquestions = numquestions
 }
 
+function restartQuiz(){
+    window.location.reload()
+}
 
 function startquiz(){
     document.getElementById("menusetting").style.display = "none"
     btnsubmitquiz.style.display = "block"
     let leftmenu = document.getElementById("leftboard")
-    //create button for left menu 
+
+    // create button for right menu 
     for(let i=0;i< totalquestions;i++){
         var btnquestion = document.createElement("button");
         let count = i+1;
@@ -99,9 +53,10 @@ function startquiz(){
         console.log(btnquestion)
         // Add buton into cell 
         leftmenu.appendChild(btnquestion)
-       
+    //==================================
     }
-     //create question 
+    
+    //create question 
      create_Questions()
 }
 
@@ -114,6 +69,7 @@ function showConfirmModal() {
 function cancelAction(){
     myModal.hide()
 }
+// when user confirm to submit the quiz
 function confirmAction() {
     console.log('Decided to submit quiz!');
     // Close the modal after action;
@@ -162,7 +118,7 @@ function create_Questions(){
     
                 // Parse the sheet into JSON
                 const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-    
+                console.log(jsonData)
                 // Process the JSON data
                 processExcelData(jsonData);
             };
@@ -332,11 +288,54 @@ function showgrade(){
    }
     resulttxt = document.getElementById("resultofquiz")
     resulttxt.style.display = "block"
+    let btnrestart = document.getElementById("restartarea")
+    btnrestart.style.display = "block"
+    let totalques = totalquestions
+    console.log("total ques:" +totalques)
     let percentage = calculatePercentageGrade(totalcorrects, totalquestions)
     resulttxt.innerText = "Total correct answers: " + totalcorrects + "/"+ totalquestions + " (" + percentage + ")" 
+      //storage the current grade
+      gradeObject = { username:user, totalpercentage:percentage,
+        totalcorrectquestion: totalcorrects, totalquestion: totalques,
+         date:get_Date_Today() }
+     
+    
+    // Storing the array in a cookie
+     // Stores the 'users' array for 7 days
+    var current_arryGradeHistory = getCookieforArray('gradehistory');
+    console.log(current_arryGradeHistory)
+    if(current_arryGradeHistory === null){
+            //set cookie to save this object for the first time
+            var gradeshistory = [
+                gradeObject
+            ];
+            console.log("\n this is a first time!")
+            setCookieforArray('gradehistory', gradeshistory, 7);
+        
+    }else{
+ //update to new item to this array 
+ current_arryGradeHistory.push(gradeObject)
+ console.log("\n okmen update new one")
+ console.log(current_arryGradeHistory)
+ deleteCookie("gradehistory");
+ setCookieforArray('gradehistory', current_arryGradeHistory, 7);
+    }
+   
+    
 
 }
 
+function get_Date_Today(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    const hours = today.getHours();
+    const minutes = today.getMinutes();
+    const seconds = today.getSeconds()
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    return hours+ ":"+ minutes + ":" + seconds + " " + ampm + " (" + mm + '/' + dd + '/' + yyyy + ")";
+}
 function changecolor_wronganswer(parentID, userchoice){
     let checkoptions = document.querySelectorAll(".questioncheckbox")
     console.log(checkoptions)
@@ -405,6 +404,8 @@ function scrollToTop() {
         behavior: 'smooth' // Enables smooth scrolling
     });
 }
+
+
 
 //catch event click checkbox
 window.onclick = e => {
